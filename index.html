@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Happy Birthday, Meena 💖</title>
+<meta name="description" content="A little birthday universe made for Meena.">
+
+<!-- Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,600&family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- Ambient canvas layer: floating hearts / sparkles / particles -->
+<canvas id="ambient-canvas"></canvas>
+
+<!-- Cursor glow (desktop only) -->
+<div class="cursor-glow" id="cursorGlow"></div>
+
+<!-- ============ CINEMATIC INTRO ============ -->
+<section id="intro" class="intro">
+  <div class="intro-particles" id="introParticles"></div>
+  <div class="intro-content">
+    <p class="intro-line" id="introLine1">Someone special has a birthday today&hellip;</p>
+    <p class="intro-line" id="introLine2">And this little surprise is just for</p>
+    <h1 class="intro-name" id="introName">MEENA<span class="intro-name-glow"></span></h1>
+    <p class="intro-line intro-final" id="introLine3">Happy Birthday, Meena! 🎂✨</p>
+    <button class="intro-skip" id="introSkip" aria-label="Skip intro">Skip intro →</button>
+  </div>
+</section>
+
+<!-- ============ MAIN SITE ============ -->
+<main id="site" class="site" aria-hidden="true">
+
+  <!-- floating decor layer -->
+  <div class="floaters" id="floaters" aria-hidden="true"></div>
+
+  <!-- ===== HERO ===== -->
+  <section class="section hero" id="hero">
+    <div class="hero-cake" aria-hidden="true">
+      <div class="cake">
+        <div class="cake-candle"><span class="flame"></span></div>
+        <div class="cake-candle"><span class="flame"></span></div>
+        <div class="cake-candle"><span class="flame"></span></div>
+        <div class="cake-top"></div>
+        <div class="cake-drip"></div>
+        <div class="cake-mid"></div>
+        <div class="cake-base"></div>
+        <div class="cake-plate"></div>
+      </div>
+      <div class="balloon b1"></div>
+      <div class="balloon b2"></div>
+      <div class="balloon b3"></div>
+    </div>
+
+    <p class="eyebrow reveal">a whole universe, just for you</p>
+    <h1 class="hero-title reveal">
+      <span class="grad-text">Happy Birthday,</span><br>
+      <span class="grad-text grad-text--big">Meena! 🎂</span>
+    </h1>
+    <p class="hero-subtitle reveal">
+      Today is all about you — your smile, your happiness,
+      and every beautiful memory we've built along the way.
+    </p>
+    <p class="made-with-love reveal">Made with lots of love ❤️</p>
+
+    <button class="btn btn-primary reveal" id="startSurpriseBtn">
+      <span>Start the Surprise</span> ✨
+    </button>
+
+    <div class="scroll-hint reveal" aria-hidden="true">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- ===== MUSIC PLAYER (floating) ===== -->
+  <div class="music-player" id="musicPlayer">
+    <button class="mp-toggle" id="mpToggle" aria-label="Play or pause music">
+      <div class="mp-icon" id="mpIcon">
+        <span></span><span></span><span></span>
+      </div>
+    </button>
+    <div class="mp-info">
+      <p class="mp-title">A Song For You</p>
+      <p class="mp-sub">from Dada 🎵</p>
+      <div class="mp-progress">
+        <div class="mp-progress-fill" id="mpProgressFill"></div>
+      </div>
+    </div>
+    <div class="mp-volume">
+      <input type="range" id="mpVolume" min="0" max="1" step="0.01" value="0.6" aria-label="Volume">
+    </div>
+    <audio id="bgAudio" loop preload="none">
+      <source src="assets/music/dada-song.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <!-- ===== FRIENDSHIP / SONG-INSPIRED MESSAGES ===== -->
+  <section class="section feeling" id="feeling">
+    <p class="section-eyebrow reveal">the feeling behind today</p>
+    <h2 class="section-title reveal">Who else would I have? <span class="grad-text">✨</span></h2>
+    <div class="feeling-grid">
+      <div class="feeling-card reveal">
+        <span class="feeling-emoji">😊</span>
+        <p>Whenever life makes you sad, I'll always try to be the reason you smile again.</p>
+      </div>
+      <div class="feeling-card reveal">
+        <span class="feeling-emoji">🌎</span>
+        <p>No matter how crazy the journey gets, let's keep making memories together.</p>
+      </div>
+      <div class="feeling-card reveal">
+        <span class="feeling-emoji">🏠</span>
+        <p>Some bonds don't need an explanation. They just feel like home.</p>
+      </div>
+      <div class="feeling-card reveal">
+        <span class="feeling-emoji">💖</span>
+        <p>Through every laugh, every fight, every crazy moment — always us.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== PHOTO MEMORY SECTION ===== -->
+  <section class="section gallery-section" id="gallerySection">
+    <p class="section-eyebrow reveal">our little universe</p>
+    <h2 class="section-title reveal">Our Little Universe 💖</h2>
+    <p class="section-subtitle reveal">Every photo here is a tiny piece of a much bigger story.</p>
+
+    <div class="gallery" id="galleryGrid"><!-- populated by JS from `memories` --></div>
+  </section>
+
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" id="lightboxClose" aria-label="Close">✕</button>
+    <button class="lightbox-nav lightbox-prev" id="lightboxPrev" aria-label="Previous photo">‹</button>
+    <div class="lightbox-inner">
+      <img id="lightboxImg" src="" alt="">
+      <p class="lightbox-caption" id="lightboxCaption"></p>
+    </div>
+    <button class="lightbox-nav lightbox-next" id="lightboxNext" aria-label="Next photo">›</button>
+  </div>
+
+  <!-- ===== VIDEO MEMORY SECTION ===== -->
+  <section class="section video-section" id="videoSection">
+    <p class="section-eyebrow reveal">a memory that moves</p>
+    <h2 class="section-title reveal">A Memory That Moves 🎥❤️</h2>
+    <div class="video-frame reveal">
+      <video id="memoryVideo" controls playsinline preload="metadata" poster="assets/images/video-poster.jpg">
+        <source src="assets/video/memory.mp4" type="video/mp4">
+        Your browser doesn't support embedded video.
+      </video>
+    </div>
+    <p class="video-caption reveal">Some memories are better when they move.</p>
+  </section>
+
+  <!-- ===== TIMELINE ===== -->
+  <section class="section timeline-section" id="timelineSection">
+    <p class="section-eyebrow reveal">a story, told in moments</p>
+    <h2 class="section-title reveal">The Meena Chronicles ✨</h2>
+
+    <div class="timeline" id="timelineList"><!-- populated by JS from `timelineEvents` --></div>
+  </section>
+
+  <!-- ===== PERSONAL LETTER ===== -->
+  <section class="section letter-section" id="letterSection">
+    <p class="section-eyebrow reveal">a little something for you</p>
+    <h2 class="section-title reveal">A Little Something For You 💌</h2>
+
+    <div class="letter reveal">
+      <p class="letter-greeting">Dear Meena,</p>
+      <p>
+        I don't say this enough, so let today be the day I finally do — you make ordinary
+        days feel a little brighter just by being in them. Every memory we've made,
+        even the silly ones, even the ones that started as arguments and somehow ended
+        in laughter, means more to me than you probably realize.
+      </p>
+      <p>
+        You bring a kind of laughter into my life that nobody else can. And even on the
+        days we don't see eye to eye, even after the fights and the silences and the
+        slammed doors — none of it ever really changes anything. The bond stays exactly
+        where it always was.
+      </p>
+      <p>
+        Wherever life takes you, I hope you carry this with you: I'll always be there.
+        Not just for the good days, but for the messy, uncertain, hard ones too.
+        So keep smiling the way only you can. Keep being exactly, unapologetically you.
+        Let's fill the years ahead with a hundred more memories worth telling.
+      </p>
+      <p>
+        Because at the end of it all, who else would I have? And who else would you have?
+        Forever, no matter what.
+      </p>
+      <p class="letter-sign">With all my love,<br>always here for you. ❤️</p>
+    </div>
+  </section>
+
+  <!-- ===== GIFT SURPRISE ===== -->
+  <section class="section gift-section" id="giftSection">
+    <p class="gift-intro reveal">There is one more surprise&hellip; 🎁</p>
+    <button class="gift-box reveal" id="giftBox" aria-label="Open your gift">
+      <div class="gift-lid"></div>
+      <div class="gift-body"></div>
+      <div class="gift-ribbon-v"></div>
+      <div class="gift-ribbon-h"></div>
+      <div class="gift-bow"></div>
+    </button>
+
+    <div class="gift-reveal" id="giftReveal">
+      <h2 class="gift-reveal-title">Happy Birthday, Meena! ❤️</h2>
+      <p class="gift-reveal-text">
+        Keep smiling.<br>
+        Keep being you.<br>
+        And let's make many more unforgettable memories.
+      </p>
+    </div>
+  </section>
+
+  <!-- ===== FINAL CINEMATIC SECTION ===== -->
+  <section class="section finale" id="finale">
+    <div class="finale-stars" id="finaleStars"></div>
+    <h2 class="finale-title reveal">Happy Birthday, Meena <span class="finale-heart">❤️</span></h2>
+    <div class="finale-lines">
+      <p class="reveal">To more laughs.</p>
+      <p class="reveal">To more crazy memories.</p>
+      <p class="reveal">To more adventures.</p>
+      <p class="reveal">To forever being there for each other.</p>
+    </div>
+    <p class="finale-signature reveal">Made with love <span class="beating-heart">❤️</span></p>
+  </section>
+
+</main>
+
+<!-- Confetti canvas (fullscreen overlay, used for celebration bursts) -->
+<canvas id="confetti-canvas"></canvas>
+
+<script src="js/script.js"></script>
+</body>
+</html>
