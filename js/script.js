@@ -42,34 +42,73 @@ const websiteConfig = {
  */
 const memories = [
   {
-    image: "assets/images/photo1.jpg",
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.26.08 PM.jpeg",
     caption: "One of those memories I'll always keep ❤️"
   },
   {
-    image: "assets/images/photo2.jpg",
-    caption: "Another crazy memory with Meena ✨"
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.26.14 PM.jpeg",
+    caption: "A beautiful memory with Meena ✨"
   },
   {
-    image: "assets/images/photo3.jpg",
-    caption: "Some days just don't need a reason to smile"
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.13 PM.jpeg",
+    caption: "Some memories never get old 💖"
   },
   {
-    image: "assets/images/photo4.jpg",
-    caption: "Chaos, but the good kind"
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.14 PM (1).jpeg",
+    caption: "One of my favorite moments ❤️"
   },
   {
-    image: "assets/images/photo5.jpg",
-    caption: "Still one of my favorite memories"
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.14 PM (2).jpeg",
+    caption: "A moment worth remembering ✨"
   },
   {
-    image: "assets/images/photo6.jpg",
-    caption: "Forever collecting moments like this one"
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.14 PM.jpeg",
+    caption: "Another beautiful memory 💕"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.15 PM.jpeg",
+    caption: "The kind of memory that makes me smile 😊"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.16 PM.jpeg",
+    caption: "Just another unforgettable moment ✨"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.18 PM.jpeg",
+    caption: "Forever keeping this memory ❤️"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.20 PM (1).jpeg",
+    caption: "A memory to keep forever 🌸"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.20 PM.jpeg",
+    caption: "Another chapter of our memories ✨"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.21 PM.jpeg",
+    caption: "And many more memories to come ❤️"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.22 PM (1).jpeg",
+    caption: "Another little memory with Meena 💖"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.22 PM.jpeg",
+    caption: "A moment I'll always remember ✨"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.23 PM.jpeg",
+    caption: "Smiles, memories and good times ❤️"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.25 PM.jpeg",
+    caption: "One more beautiful memory 💕"
+  },
+  {
+    image: "assets/images/WhatsApp Image 2026-08-09 at 5.58.29 PM.jpeg",
+    caption: "Here's to many more memories together 🌎✨"
   }
-  // Example of a GitHub-hosted, URL-encoded image:
-  // {
-  //   image: "https://raw.githubusercontent.com/DHAYALANKANIAPPAN/Birthday/main/Images/WhatsApp%20Image%202026-08-09%20at%205.58.14%20PM%20%281%29.jpeg",
-  //   caption: "Add your own caption here ✨"
-  // },
 ];
 
 /**
@@ -496,4 +535,4 @@ document.addEventListener('DOMContentLoaded', ()=>{
     }, { threshold: 0.5 });
     io.observe(finale);
   }
-});
+});   
